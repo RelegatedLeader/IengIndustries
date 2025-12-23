@@ -36,23 +36,25 @@
     .button-primary { animation: buttonGlow 3s ease-in-out infinite; }
   </style>
 
-  <!-- Animated Vehicle Background -->
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; width: 600px; height: 600px; display: flex; align-items: center; justify-content: center;">
-    <!-- Nexus Express Bus -->
-    <div class="background-vehicle" id="vehicle-1" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 0s; opacity: 0;">🚌</div>
-    
-    <!-- Velocity Prime Taxi -->
-    <div class="background-vehicle" id="vehicle-2" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 2s; opacity: 0;">🚕</div>
-    
-    <!-- Hyperion Rail Train -->
-    <div class="background-vehicle" id="vehicle-3" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 4s; opacity: 0;">🚄</div>
-    
-    <!-- Quantum Portal -->
-    <div class="background-vehicle" id="vehicle-4" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 6s; opacity: 0;">✨</div>
-  </div>
+  <!-- Animated Vehicle Background - Behind Title Only -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 60%; z-index: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; display: flex; align-items: center; justify-content: center;">
+      <!-- Nexus Express Bus -->
+      <div class="background-vehicle" id="vehicle-1" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 0s; opacity: 0;">🚌</div>
+      
+      <!-- Velocity Prime Taxi -->
+      <div class="background-vehicle" id="vehicle-2" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 2s; opacity: 0;">🚕</div>
+      
+      <!-- Hyperion Rail Train -->
+      <div class="background-vehicle" id="vehicle-3" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 4s; opacity: 0;">🚄</div>
+      
+      <!-- Quantum Portal -->
+      <div class="background-vehicle" id="vehicle-4" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 6s; opacity: 0;">✨</div>
 
-  <!-- Glow Effect Overlay -->
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); animation: vehicleGlowPulse 8s ease-in-out infinite;"></div>
+      <!-- Glow Effect Overlay -->
+      <div style="position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); animation: vehicleGlowPulse 8s ease-in-out infinite;"></div>
+    </div>
+  </div>
 
   <!-- Animated Orbs Background -->
   <div style="position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%); animation: orb1 8s ease-in-out infinite;"></div>
