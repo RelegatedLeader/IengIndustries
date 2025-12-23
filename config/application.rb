@@ -38,5 +38,8 @@ module Ieng
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    # Skip eager loading for Devise to avoid Zeitwerk conflicts
+    config.eager_load_paths.delete(Gem.loaded_specs['devise'].full_gem_path + '/app') if Gem.loaded_specs['devise']
   end
 end
