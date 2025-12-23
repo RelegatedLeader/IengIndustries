@@ -1,83 +1,81 @@
-<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000 100%); min-height: 100vh;">
+<div class="hero" style="background: linear-gradient(135deg, #0a0f1e 0%, #1a1f3a 50%, #2d1b4e 100%); position: relative; overflow: hidden;">
+  <div style="position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%); animation: float 6s ease-in-out infinite;"></div>
+  
   <!-- Navigation -->
-  <nav style="background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(51, 65, 85, 0.5);">
-    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;">
-      <h1 style="font-size: 1.875rem; font-weight: bold; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-        <%= link_to "⚡ IENG Industries", root_path, style: "text-decoration: none; color: inherit;" %>
+  <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 15, 30, 0.98); backdrop-filter: blur(20px); padding: 1.2rem 2.5rem; z-index: 50; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(168, 85, 247, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto;">
+      <h1 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px;">
+        <%= link_to "⚡ IENG", root_path, style: "text-decoration: none; color: inherit;" %>
       </h1>
-      <div style="display: flex; gap: 1.5rem; color: #cbd5e1; align-items: center;">
-        <%= link_to "Vehicles", vehicles_path, style: "text-decoration: none; color: #cbd5e1; transition: color 0.3s;" %>
+      <div style="display: flex; gap: 2rem; align-items: center;">
+        <%= link_to "Vehicles", vehicles_path, style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
         <% if current_user %>
-          <%= link_to "My Bookings", bookings_path, style: "text-decoration: none; color: #cbd5e1; transition: color 0.3s;" %>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, style: "text-decoration: none; padding: 0.5rem 1rem; background: #dc2626; color: white; border-radius: 0.5rem; transition: background 0.3s;" %>
+          <%= link_to "Bookings", bookings_path, style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;" %>
         <% else %>
-          <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none; padding: 0.5rem 1rem; background: #a855f7; color: white; border-radius: 0.5rem; transition: background 0.3s;" %>
-          <%= link_to "Sign Up", new_user_registration_path, style: "text-decoration: none; padding: 0.5rem 1rem; background: #ec4899; color: white; border-radius: 0.5rem; transition: background 0.3s;" %>
+          <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s;" %>
+          <%= link_to "Sign Up", new_user_registration_path, style: "text-decoration: none; padding: 0.75rem 1.5rem; border: 2px solid #a855f7; color: #a855f7; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;" %>
         <% end %>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
-    <div style="text-align: center;">
-      <h2 style="font-size: 3.75rem; font-weight: bold; color: #fff; margin-bottom: 1.5rem;">
-        The Future of 
-        <span style="background: linear-gradient(135deg, #a855f7, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-          Transportation
-        </span>
-      </h2>
-      
-      <p style="font-size: 1.25rem; color: #cbd5e1; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Experience the next generation of mobility. Hover buses, advanced trains, magnetic taxis, and experimental teleport chambers powered by nuclear fusion and solar energy.
-      </p>
+  <!-- Hero Content -->
+  <div class="hero-content" style="position: relative; z-index: 1; text-align: center; padding-top: 100px;">
+    <h2 style="font-size: 4.5rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: -2px;">
+      The Future of<br/>Transportation
+    </h2>
+    
+    <p style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+      Experience next-generation mobility. From hyperloop trains to quantum teleportation — powered by advanced nuclear fusion and solar technology.
+    </p>
 
-      <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem;">
-        <% if current_user %>
-          <%= link_to "🚀 Book a Ride", new_booking_path, style: "text-decoration: none; padding: 0.75rem 2rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);" %>
-        <% else %>
-          <%= link_to "🚀 Book a Ride", new_user_session_path, style: "text-decoration: none; padding: 0.75rem 2rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);" %>
-        <% end %>
-        <%= link_to "Learn More", vehicles_path, style: "text-decoration: none; padding: 0.75rem 2rem; border: 2px solid #a855f7; color: #a855f7; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s;" %>
-      </div>
+    <div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 6rem; flex-wrap: wrap;">
+      <% if current_user %>
+        <%= link_to "🚀 BOOK YOUR JOURNEY", new_booking_path, style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+      <% else %>
+        <%= link_to "🚀 BOOK YOUR JOURNEY", new_user_session_path, style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+      <% end %>
+      <%= link_to "EXPLORE VEHICLES", vehicles_path, style: "text-decoration: none; padding: 1rem 2.5rem; border: 2px solid #a855f7; color: #a855f7; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+    </div>
+  </div>
+</div>
+
+<!-- Services Section -->
+<section style="padding: 8rem 2rem; background: linear-gradient(180deg, #0a0f1e 0%, #000 100%);">
+  <h2 style="text-align: center; font-size: 3rem; margin-bottom: 5rem; color: #fff; font-weight: 700; letter-spacing: -1px;">OUR FLEET</h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto;">
+    <!-- Nexus Express -->
+    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden; hover:transform: translateY(-8px);">
+      <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚌</div>
+      <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Nexus Express</h3>
+      <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Autonomous hover-bus network. Zero-emission, sustainable mass transit for 50 passengers.</p>
+      <p style="color: #ec4899; font-weight: 700; font-size: 1.3rem;">$150/hour</p>
     </div>
 
-    <!-- Service Cards -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;"
-        <p class="text-slate-300 text-sm">Mass transit with zero emissions. High-capacity, smooth rides at 200 mph.</p>
-        <div class="mt-4 text-purple-400 text-sm font-semibold group-hover:text-pink-400 transition">$2.50/mile →</div>
-      </div>
+    <!-- Velocity Prime -->
+    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+      <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚕</div>
+      <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Velocity Prime</h3>
+      <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Premium hover-taxi service. AI-optimized routes, luxury cabin, 4 passengers max.</p>
+      <p style="color: #ec4899; font-weight: 700; font-size: 1.3rem;">$45/hour</p>
+    </div>
 
-      <!-- Hover Buses -->
-      <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 0.5rem; padding: 1.5rem; transition: all 0.3s;">
-        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚌</div>
-        <h3 style="font-size: 1.25rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">Hover Buses</h3>
-        <p style="color: #cbd5e1; font-size: 0.875rem;">Mass transit with zero emissions. High-capacity, smooth rides at 200 mph.</p>
-        <div style="margin-top: 1rem; color: #a855f7; font-size: 0.875rem; font-weight: 600; transition: color 0.3s;">$2.50/mile →</div>
-      </div>
+    <!-- Hyperion Rail -->
+    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+      <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚄</div>
+      <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Hyperion Rail</h3>
+      <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Magnetic levitation express. 500+ mph intercity transport for 200 passengers.</p>
+      <p style="color: #22d3ee; font-weight: 700; font-size: 1.3rem;">$300/hour</p>
+    </div>
 
-      <!-- Hover Taxis -->
-      <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(236, 72, 153, 0.3); border-radius: 0.5rem; padding: 1.5rem; transition: all 0.3s;">
-        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚕</div>
-        <h3 style="font-size: 1.25rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">Hover Taxis</h3>
-        <p style="color: #cbd5e1; font-size: 0.875rem;">Personal transport at your fingertips. AI-optimized routes. Premium comfort.</p>
-        <div style="margin-top: 1rem; color: #ec4899; font-size: 0.875rem; font-weight: 600; transition: color 0.3s;">$4.50/mile →</div>
-      </div>
-
-      <!-- Advanced Trains -->
-      <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(34, 211, 238, 0.3); border-radius: 0.5rem; padding: 1.5rem; transition: all 0.3s;">
-        <div style="font-size: 2rem; margin-bottom: 0.75rem;">🚄</div>
-        <h3 style="font-size: 1.25rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">Advanced Trains</h3>
-        <p style="color: #cbd5e1; font-size: 0.875rem;">Intercity express service. Magnetic levitation technology. 500+ mph capabilities.</p>
-        <div style="margin-top: 1rem; color: #22d3ee; font-size: 0.875rem; font-weight: 600; transition: color 0.3s;">$1.75/mile →</div>
-      </div>
-
-      <!-- Teleport Chambers -->
-      <div style="background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid rgba(251, 146, 60, 0.3); border-radius: 0.5rem; padding: 1.5rem; transition: all 0.3s;">
-        <div style="font-size: 2rem; margin-bottom: 0.75rem;">✨</div>
-        <h3 style="font-size: 1.25rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem;">Teleport Chambers</h3>
-        <p style="color: #cbd5e1; font-size: 0.875rem;">Experimental quantum transportation. Instantaneous travel (beta testing).</p>
-        <div style="margin-top: 1rem; color: #fb923c; font-size: 0.875rem; font-weight: 600; transition: color 0.3s;">$99.99 flat →</div>
+    <!-- Quantum Portal -->
+    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(251, 146, 60, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+      <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">✨</div>
+      <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Quantum Portal</h3>
+      <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Experimental quantum teleportation. Instantaneous travel (beta testing, single passenger).</p>
+      <p style="color: #fb923c; font-weight: 700; font-size: 1.3rem;">$99.99/trip</p>
       </div>
     </div>
 

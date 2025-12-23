@@ -51,12 +51,12 @@ locations.each { |loc| Location.find_or_create_by(name: loc[:name]) { |l| l.upda
 
 # Seed vehicles
 vehicles_data = [
-  { name: "Sky Bus Alpha", vehicle_type: :hover_bus, license_plate: "HB-001", capacity: 50, energy_type: :nuclear_fusion, hourly_rate: 150.0, driver: driver1 },
-  { name: "Sky Bus Beta", vehicle_type: :hover_bus, license_plate: "HB-002", capacity: 50, energy_type: :solar_hybrid, hourly_rate: 140.0, driver: driver2 },
-  { name: "Hover Taxi One", vehicle_type: :hover_taxi, license_plate: "HT-001", capacity: 4, energy_type: :nuclear_fusion, hourly_rate: 45.0, driver: driver1 },
-  { name: "Hover Taxi Two", vehicle_type: :hover_taxi, license_plate: "HT-002", capacity: 4, energy_type: :solar_hybrid, hourly_rate: 40.0, driver: driver2 },
-  { name: "Express Train One", vehicle_type: :advanced_train, license_plate: "AT-001", capacity: 200, energy_type: :nuclear_fusion, hourly_rate: 300.0, driver: driver1 },
-  { name: "Teleport Chamber Prototype", vehicle_type: :teleport_chamber, license_plate: "TC-001", capacity: 1, energy_type: :nuclear_fusion, hourly_rate: 99.99, driver: admin }
+  { name: "Nexus Express", vehicle_type: :hover_bus, license_plate: "NX-001", capacity: 50, energy_type: :nuclear_fusion, hourly_rate: 150.0, driver: driver1 },
+  { name: "Nexus Express Solar", vehicle_type: :hover_bus, license_plate: "NX-002", capacity: 50, energy_type: :solar_hybrid, hourly_rate: 140.0, driver: driver2 },
+  { name: "Velocity Prime", vehicle_type: :hover_taxi, license_plate: "VP-001", capacity: 4, energy_type: :nuclear_fusion, hourly_rate: 45.0, driver: driver1 },
+  { name: "Velocity Prime Eco", vehicle_type: :hover_taxi, license_plate: "VP-002", capacity: 4, energy_type: :solar_hybrid, hourly_rate: 40.0, driver: driver2 },
+  { name: "Hyperion Rail", vehicle_type: :advanced_train, license_plate: "HR-001", capacity: 200, energy_type: :nuclear_fusion, hourly_rate: 300.0, driver: driver1 },
+  { name: "Quantum Portal", vehicle_type: :teleport_chamber, license_plate: "QP-001", capacity: 1, energy_type: :nuclear_fusion, hourly_rate: 99.99, driver: admin }
 ]
 
 vehicles_data.each do |data|
