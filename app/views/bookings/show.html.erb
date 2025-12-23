@@ -1,0 +1,66 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black py-12 px-6">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-white mb-8">Booking Details</h1>
+    
+    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-8 mb-6">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h2 class="text-3xl font-bold text-white"><%= @booking.vehicle.name %></h2>
+          <p class="text-purple-400 font-mono text-lg"><%= @booking.confirmation_code %></p>
+        </div>
+        <span class="px-4 py-2 rounded-full text-lg font-semibold <%= status_badge_color(@booking.status) %>">
+          <%= @booking.status.humanize %>
+        </span>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-6 mb-8 pb-8 border-b border-slate-700">
+        <div>
+          <p class="text-slate-500 text-sm">PICKUP</p>
+          <p class="text-white text-lg font-semibold"><%= @booking.pickup_location.name %></p>
+          <p class="text-slate-400"><%= @booking.pickup_location.address %></p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-sm">DROPOFF</p>
+          <p class="text-white text-lg font-semibold"><%= @booking.dropoff_location.name %></p>
+          <p class="text-slate-400"><%= @booking.dropoff_location.address %></p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-6 mb-8 pb-8 border-b border-slate-700">
+        <div>
+          <p class="text-slate-500 text-sm">SCHEDULED TIME</p>
+          <p class="text-white text-lg font-semibold"><%= @booking.scheduled_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-sm">PASSENGERS</p>
+          <p class="text-white text-lg font-semibold"><%= @booking.passenger_count %></p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="text-slate-500 text-sm">ESTIMATED FARE</p>
+          <p class="text-white text-2xl font-bold"><%= number_to_currency(@booking.estimated_fare) %></p>
+        </div>
+        <div>
+          <p class="text-slate-500 text-sm">PAYMENT STATUS</p>
+          <p class="text-white text-lg font-semibold"><%= @booking.payment_status.humanize %></p>
+        </div>
+      </div>
+      
+      <% if @booking.special_requests.present? %>
+        <div class="mt-8 pt-8 border-t border-slate-700">
+          <p class="text-slate-500 text-sm">SPECIAL REQUESTS</p>
+          <p class="text-white"><%= @booking.special_requests %></p>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="flex gap-4">
+      <%= link_to "← Back to Bookings", bookings_path, class: "px-6 py-2 border border-slate-600 text-slate-300 rounded-lg hover:border-slate-500 transition" %>
+      <% if @booking.pending? %>
+        <%= link_to "Cancel Booking", booking_path(@booking, action: 'cancel'), method: :patch, data: { confirm: "Are you sure?" }, class: "px-6 py-2 bg-red-500/20 border border-red-500 text-red-400 rounded-lg hover:bg-red-500/30 transition" %>
+      <% end %>
+    </div>
+  </div>
+</div>

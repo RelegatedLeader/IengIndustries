@@ -1,0 +1,66 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black py-12 px-6">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-bold text-white mb-8">Available Vehicles</h1>
+    
+    <!-- Filter Buttons -->
+    <div class="flex gap-3 mb-8 overflow-x-auto pb-4">
+      <%= link_to "All Vehicles", vehicles_path, class: "px-4 py-2 bg-slate-700 text-white rounded-full font-semibold hover:bg-purple-600 transition whitespace-nowrap" %>
+      <% Vehicle.vehicle_types.keys.each do |type| %>
+        <%= link_to type.humanize, vehicles_path(type: type), class: "px-4 py-2 bg-slate-700 text-white rounded-full font-semibold hover:bg-purple-600 transition whitespace-nowrap" %>
+      <% end %>
+    </div>
+    
+    <!-- Vehicle Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @vehicles.each do |vehicle| %>
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-lg overflow-hidden hover:border-purple-500 transition group">
+          <!-- Header with icon -->
+          <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-4 flex items-center justify-between">
+            <h3 class="text-xl font-bold text-white"><%= vehicle.name %></h3>
+            <span class="text-3xl"><%= vehicle_icon(vehicle.vehicle_type) %></span>
+          </div>
+          
+          <!-- Body -->
+          <div class="p-6">
+            <!-- Vehicle Type -->
+            <p class="text-slate-400 text-sm mb-2">
+              <span class="text-slate-500">Type:</span>
+              <span class="text-purple-400 font-semibold"><%= vehicle.vehicle_type.humanize %></span>
+            </p>
+            
+            <!-- Capacity -->
+            <p class="text-slate-400 text-sm mb-2">
+              <span class="text-slate-500">Capacity:</span>
+              <span class="text-white font-semibold"><%= vehicle.capacity %> passengers</span>
+            </p>
+            
+            <!-- Energy Type -->
+            <p class="text-slate-400 text-sm mb-4">
+              <span class="text-slate-500">Powered by:</span>
+              <span class="text-green-400 font-semibold">⚛️ <%= vehicle.energy_type.humanize %></span>
+            </p>
+            
+            <!-- Status -->
+            <div class="mb-4 pb-4 border-b border-slate-700">
+              <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold <%= status_badge_color(vehicle.status) %>">
+                <%= vehicle.status.humanize %>
+              </span>
+            </div>
+            
+            <!-- Price -->
+            <p class="text-2xl font-bold text-white mb-6">
+              <%= number_to_currency(vehicle.hourly_rate) %><span class="text-sm text-slate-400">/hour</span>
+            </p>
+            
+            <!-- CTA -->
+            <% if current_user %>
+              <%= link_to "Book Now →", new_booking_path(vehicle_id: vehicle.id), class: "block w-full text-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition" %>
+            <% else %>
+              <%= link_to "Sign In to Book", new_user_session_path, class: "block w-full text-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

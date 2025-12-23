@@ -1,0 +1,51 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black py-12 px-6">
+  <div class="max-w-2xl mx-auto">
+    <h1 class="text-4xl font-bold text-white mb-8">My Bookings</h1>
+    
+    <%= link_to "🚀 New Booking", new_booking_path, class: "mb-6 inline-block px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all" %>
+    
+    <% if @bookings.any? %>
+      <div class="space-y-4">
+        <% @bookings.each do |booking| %>
+          <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-6 hover:border-purple-500 transition">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-bold text-white"><%= booking.vehicle.name %></h3>
+                <p class="text-slate-400">Confirmation: <span class="text-purple-400 font-mono"><%= booking.confirmation_code %></span></p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-sm font-semibold <%= status_badge_color(booking.status) %>">
+                <%= booking.status.humanize %>
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 text-sm text-slate-300 mb-4">
+              <div>
+                <p class="text-slate-500">Pickup</p>
+                <p class="text-white font-semibold"><%= booking.pickup_location.name %></p>
+              </div>
+              <div>
+                <p class="text-slate-500">Dropoff</p>
+                <p class="text-white font-semibold"><%= booking.dropoff_location.name %></p>
+              </div>
+              <div>
+                <p class="text-slate-500">Scheduled</p>
+                <p class="text-white font-semibold"><%= booking.scheduled_time.strftime("%b %d, %I:%M %p") %></p>
+              </div>
+              <div>
+                <p class="text-slate-500">Fare</p>
+                <p class="text-white font-semibold"><%= number_to_currency(booking.estimated_fare) %></p>
+              </div>
+            </div>
+            
+            <%= link_to "View Details", booking_path(booking), class: "text-purple-400 hover:text-pink-400 transition" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-12 text-center">
+        <p class="text-slate-400 mb-6">You haven't booked any rides yet.</p>
+        <%= link_to "Book Your First Ride", new_booking_path, class: "px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all" %>
+      </div>
+    <% end %>
+  </div>
+</div>
