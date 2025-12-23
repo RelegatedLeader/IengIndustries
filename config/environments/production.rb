@@ -7,7 +7,8 @@ Rails.application.configure do
   config.enable_reloading = false
 
   # Eager load code on boot for better performance and memory savings (ignored by Rake tasks).
-  config.eager_load = true
+  # Disabled due to Devise/Zeitwerk compatibility issues in Rails 8.1
+  config.eager_load = false
 
   # Full error reports are disabled.
   config.consider_all_requests_local = false
