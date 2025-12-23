@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: ieng-industries
+    env: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -t 5:5 -p ${PORT:-3000}"
+    envVars:
+      - key: DATABASE_URL
+        scope: build
+      - key: RAILS_MASTER_KEY
+        scope: build
+      - key: RAILS_ENV
+        value: production
