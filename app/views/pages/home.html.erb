@@ -36,24 +36,11 @@
     .button-primary { animation: buttonGlow 3s ease-in-out infinite; }
   </style>
 
-  <!-- Animated Vehicle Background - Behind Title Only -->
+  <!-- Video Background - Hover Bus -->
   <div style="position: absolute; top: 0; left: 0; right: 0; height: 60%; z-index: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; display: flex; align-items: center; justify-content: center;">
-      <!-- Nexus Express Bus -->
-      <div class="background-vehicle" id="vehicle-1" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 0s; opacity: 0;">🚌</div>
-      
-      <!-- Velocity Prime Taxi -->
-      <div class="background-vehicle" id="vehicle-2" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 2s; opacity: 0;">🚕</div>
-      
-      <!-- Hyperion Rail Train -->
-      <div class="background-vehicle" id="vehicle-3" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 4s; opacity: 0;">🚄</div>
-      
-      <!-- Quantum Portal -->
-      <div class="background-vehicle" id="vehicle-4" style="position: absolute; font-size: 200px; animation: vehicleSequence 8s ease-in-out infinite; animation-delay: 6s; opacity: 0;">✨</div>
-
-      <!-- Glow Effect Overlay -->
-      <div style="position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); animation: vehicleGlowPulse 8s ease-in-out infinite;"></div>
-    </div>
+    <video autoplay muted loop style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+      <source src="/hoverBus_3.mp4" type="video/mp4">
+    </video>
   </div>
 
   <!-- Animated Orbs Background -->
@@ -61,7 +48,7 @@
   <div style="position: absolute; bottom: -30%; left: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%); animation: orb2 10s ease-in-out infinite;"></div>
 
   <!-- Dark Overlay for Text Readability -->
-  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%); z-index: 0.5; pointer-events: none;"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 60%; background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%); z-index: 0.5; pointer-events: none;"></div>
 
   <!-- Hero Content -->
   <div class="hero-content" style="position: relative; z-index: 1; text-align: center; padding: 120px 2rem 3rem;">
