@@ -1,0 +1,45 @@
+<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+  <div style="width: 100%; max-width: 450px;">
+    <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(51, 65, 85, 0.8); border-radius: 0.5rem; padding: 2rem; backdrop-filter: blur(10px);">
+      
+      <!-- Header -->
+      <h2 style="font-size: 1.875rem; font-weight: bold; color: #fff; margin-bottom: 0.5rem; text-align: center;">
+        🔐 Set New Password
+      </h2>
+      <p style="color: #94a3b8; text-align: center; margin-bottom: 2rem;">Enter your new password below</p>
+
+      <!-- Error Messages -->
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <!-- Form -->
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, local: true) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <!-- Password Field -->
+        <div style="margin-bottom: 1.5rem;">
+          <%= f.label :password, "New Password", style: "display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 0.5rem;" %>
+          <% if @minimum_password_length %>
+            <em style="color: #94a3b8; font-size: 0.875rem;">(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", style: "width: 100%; padding: 0.75rem; background: #1e293b; border: 1px solid #475569; color: #fff; border-radius: 0.375rem; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s; margin-top: 0.5rem;" %>
+        </div>
+
+        <!-- Password Confirmation Field -->
+        <div style="margin-bottom: 2rem;">
+          <%= f.label :password_confirmation, "Confirm New Password", style: "display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 0.5rem;" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width: 100%; padding: 0.75rem; background: #1e293b; border: 1px solid #475569; color: #fff; border-radius: 0.375rem; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s;" %>
+        </div>
+
+        <!-- Submit Button -->
+        <div style="margin-bottom: 1.5rem;">
+          <%= f.submit "Update Password", style: "width: 100%; padding: 0.75rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; border: none; border-radius: 0.375rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s;" %>
+        </div>
+      <% end %>
+
+      <!-- Links -->
+      <div style="border-top: 1px solid #475569; padding-top: 1.5rem; text-align: center;">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

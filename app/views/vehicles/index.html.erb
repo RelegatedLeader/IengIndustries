@@ -1,62 +1,64 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black py-12 px-6">
-  <div class="max-w-7xl mx-auto">
-    <h1 class="text-4xl font-bold text-white mb-8">Available Vehicles</h1>
+<div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000 100%); min-height: 100vh; padding: 3rem 1.5rem;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <h1 style="font-size: 2.25rem; font-weight: bold; color: #fff; margin-bottom: 2rem;">🚀 Available Vehicles</h1>
     
     <!-- Filter Buttons -->
-    <div class="flex gap-3 mb-8 overflow-x-auto pb-4">
-      <%= link_to "All Vehicles", vehicles_path, class: "px-4 py-2 bg-slate-700 text-white rounded-full font-semibold hover:bg-purple-600 transition whitespace-nowrap" %>
+    <div style="display: flex; gap: 0.75rem; margin-bottom: 2rem; overflow-x: auto; padding-bottom: 1rem; flex-wrap: wrap;">
+      <a href="<%= vehicles_path %>" style="padding: 0.5rem 1rem; background: #475569; color: #fff; border-radius: 9999px; font-weight: 600; text-decoration: none; white-space: nowrap; border: none; cursor: pointer; transition: all 0.3s;">All Vehicles</a>
       <% Vehicle.vehicle_types.keys.each do |type| %>
-        <%= link_to type.humanize, vehicles_path(type: type), class: "px-4 py-2 bg-slate-700 text-white rounded-full font-semibold hover:bg-purple-600 transition whitespace-nowrap" %>
+        <a href="<%= vehicles_path(type: type) %>" style="padding: 0.5rem 1rem; background: #475569; color: #fff; border-radius: 9999px; font-weight: 600; text-decoration: none; white-space: nowrap; border: none; cursor: pointer; transition: all 0.3s; display: inline-block;" onmouseover="this.style.background='#a855f7'" onmouseout="this.style.background='#475569'"><%= type.humanize %></a>
       <% end %>
     </div>
     
     <!-- Vehicle Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
       <% @vehicles.each do |vehicle| %>
-        <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-lg overflow-hidden hover:border-purple-500 transition group">
-          <!-- Header with icon -->
-          <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-4 flex items-center justify-between">
-            <h3 class="text-xl font-bold text-white"><%= vehicle.name %></h3>
-            <span class="text-3xl"><%= vehicle_icon(vehicle.vehicle_type) %></span>
+        <div style="background: linear-gradient(to bottom right, #1e293b, #0f172a); border: 1px solid #475569; border-radius: 0.5rem; overflow: hidden; transition: all 0.3s;" onmouseover="this.style.borderColor='#a855f7';" onmouseout="this.style.borderColor='#475569';">
+          
+          <!-- Header with gradient -->
+          <div style="background: linear-gradient(135deg, #a855f7, #ec4899); padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 1.25rem; font-weight: bold; color: #fff; margin: 0;"><%= vehicle.name %></h3>
+            <span style="font-size: 2rem;"><%= vehicle_icon(vehicle.vehicle_type) %></span>
           </div>
           
           <!-- Body -->
-          <div class="p-6">
+          <div style="padding: 1.5rem;">
             <!-- Vehicle Type -->
-            <p class="text-slate-400 text-sm mb-2">
-              <span class="text-slate-500">Type:</span>
-              <span class="text-purple-400 font-semibold"><%= vehicle.vehicle_type.humanize %></span>
+            <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">
+              <span style="color: #64748b;">Type:</span>
+              <span style="color: #a78bfa; font-weight: 600;"><%= vehicle.vehicle_type.humanize %></span>
             </p>
             
             <!-- Capacity -->
-            <p class="text-slate-400 text-sm mb-2">
-              <span class="text-slate-500">Capacity:</span>
-              <span class="text-white font-semibold"><%= vehicle.capacity %> passengers</span>
+            <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 0.5rem;">
+              <span style="color: #64748b;">Capacity:</span>
+              <span style="color: #fff; font-weight: 600;"><%= vehicle.capacity %> passengers</span>
             </p>
             
             <!-- Energy Type -->
-            <p class="text-slate-400 text-sm mb-4">
-              <span class="text-slate-500">Powered by:</span>
-              <span class="text-green-400 font-semibold">⚛️ <%= vehicle.energy_type.humanize %></span>
+            <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 1rem;">
+              <span style="color: #64748b;">Powered by:</span>
+              <span style="color: #4ade80; font-weight: 600;">⚛️ <%= vehicle.energy_type.humanize %></span>
             </p>
             
-            <!-- Status -->
-            <div class="mb-4 pb-4 border-b border-slate-700">
-              <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold <%= status_badge_color(vehicle.status) %>">
+            <!-- Status Badge -->
+            <div style="margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #475569;">
+              <% status_color = vehicle.available? ? '#10b981' : vehicle.in_transit? ? '#f59e0b' : '#ef4444' %>
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; background: <%= status_color %>; color: #fff;">
                 <%= vehicle.status.humanize %>
               </span>
             </div>
             
             <!-- Price -->
-            <p class="text-2xl font-bold text-white mb-6">
-              <%= number_to_currency(vehicle.hourly_rate) %><span class="text-sm text-slate-400">/hour</span>
+            <p style="font-size: 1.5rem; font-weight: bold; color: #fff; margin-bottom: 1.5rem;">
+              $<%= vehicle.hourly_rate %><span style="font-size: 0.875rem; color: #94a3b8;">/hour</span>
             </p>
             
-            <!-- CTA -->
+            <!-- CTA Button -->
             <% if current_user %>
-              <%= link_to "Book Now →", new_booking_path(vehicle_id: vehicle.id), class: "block w-full text-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition" %>
+              <a href="<%= new_booking_path(vehicle_id: vehicle.id) %>" style="display: block; text-align: center; padding: 0.5rem 1rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; border-radius: 0.5rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px rgba(168, 85, 247, 0.5)'" onmouseout="this.style.boxShadow='none'">Book Now →</a>
             <% else %>
-              <%= link_to "Sign In to Book", new_user_session_path, class: "block w-full text-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition" %>
+              <a href="<%= new_user_session_path %>" style="display: block; text-align: center; padding: 0.5rem 1rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: #fff; border-radius: 0.5rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.boxShadow='0 0 30px rgba(168, 85, 247, 0.5)'" onmouseout="this.style.boxShadow='none'">Sign In to Book</a>
             <% end %>
           </div>
         </div>
