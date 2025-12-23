@@ -1,8 +1,34 @@
 <!-- Navigation -->
 <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 15, 30, 0.98); backdrop-filter: blur(20px); padding: 1.2rem 2.5rem; z-index: 50; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(168, 85, 247, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); animation: fadeInDown 0.6s ease-out;">
   <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto;">
-    <h1 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; margin: 0;">
-      <%= link_to "⚡ IENG", root_path, style: "text-decoration: none; color: inherit;" %>
+    <!-- Animated Logo -->
+    <div class="logo-container" style="position: relative; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <svg viewBox="0 0 100 100" width="50" height="50" style="filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));">
+        <!-- Lightning Bolt Background Circle -->
+        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradientStroke)" stroke-width="2" class="logo-circle" style="filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.8));"/>
+        
+        <!-- Lightning Bolt -->
+        <path d="M 50 15 L 65 45 L 50 45 L 70 85 L 35 50 L 50 50 Z" fill="url(#gradientFill)" class="logo-bolt" style="filter: drop-shadow(0 0 6px rgba(236, 72, 153, 0.9));"/>
+        
+        <!-- Gradient Definitions -->
+        <defs>
+          <linearGradient id="gradientFill" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+          </linearGradient>
+          <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+      </svg>
+      
+      <!-- Glow Effect -->
+      <div class="logo-glow" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%); animation: logoPulse 2s ease-in-out infinite;"></div>
+    </div>
+
+    <h1 style="font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 0 1.5rem;">
+      <%= link_to "IENG", root_path, style: "text-decoration: none; color: inherit;" %>
     </h1>
     <div style="display: flex; gap: 2rem; align-items: center;">
       <%= link_to "Vehicles", vehicles_path, style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
@@ -22,4 +48,38 @@
 
 <style>
   @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes logoPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
+  @keyframes logoSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  
+  .logo-circle { animation: logoSpin 8s linear infinite; }
+  .logo-bolt { animation: logoPulse 2s ease-in-out infinite; }
+  .logo-glow { animation: logoPulse 2s ease-in-out infinite; }
 </style>
+
+<script>
+  // GSAP Logo Animation on Hover
+  document.addEventListener('DOMContentLoaded', function() {
+    const logoContainer = document.querySelector('.logo-container');
+    if (logoContainer) {
+      logoContainer.addEventListener('mouseenter', function() {
+        gsap.to('.logo-bolt', { 
+          duration: 0.6, 
+          scale: 1.2, 
+          rotation: 360, 
+          ease: 'back.out',
+          boxShadow: '0 0 20px rgba(236, 72, 153, 1)'
+        });
+      });
+      
+      logoContainer.addEventListener('mouseleave', function() {
+        gsap.to('.logo-bolt', { 
+          duration: 0.6, 
+          scale: 1, 
+          rotation: 0,
+          ease: 'back.out'
+        });
+      });
+    }
+  });
+</script>
+

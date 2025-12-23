@@ -10,8 +10,14 @@
     @keyframes slideCarousel { 0% { transform: translateX(0); } 20% { transform: translateX(0); } 25% { transform: translateX(-100%); } 45% { transform: translateX(-100%); } 50% { transform: translateX(-200%); } 70% { transform: translateX(-200%); } 75% { transform: translateX(-300%); } 95% { transform: translateX(-300%); } 100% { transform: translateX(-400%); } }
     @keyframes orb1 { 0% { transform: translate(0, 0) scale(1); opacity: 0.3; } 50% { transform: translate(100px, -50px) scale(1.2); opacity: 0.5; } 100% { transform: translate(0, 0) scale(1); opacity: 0.3; } }
     @keyframes orb2 { 0% { transform: translate(0, 0) scale(1); opacity: 0.3; } 50% { transform: translate(-80px, 60px) scale(1.1); opacity: 0.5; } 100% { transform: translate(0, 0) scale(1); opacity: 0.3; } }
+    @keyframes buttonGlow { 0%, 100% { box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4), 0 0 20px rgba(168, 85, 247, 0.3); } 50% { box-shadow: 0 15px 40px rgba(168, 85, 247, 0.6), 0 0 30px rgba(168, 85, 247, 0.5); } }
     .vehicle-carousel { display: flex; gap: 2rem; overflow: hidden; animation: slideCarousel 20s ease-in-out infinite; }
     .carousel-item { flex: 0 0 calc(25% - 1.5rem); animation: pulse 3s ease-in-out infinite; }
+    .service-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    .service-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 50px rgba(168, 85, 247, 0.3); }
+    .hero-title { animation: fadeInUp 0.8s ease-out; }
+    .hero-subtitle { animation: fadeInUp 0.8s ease-out 0.2s both; }
+    .button-primary { animation: buttonGlow 3s ease-in-out infinite; }
   </style>
 
   <!-- Animated Orbs Background -->
@@ -20,37 +26,37 @@
 
   <!-- Hero Content -->
   <div class="hero-content" style="position: relative; z-index: 1; text-align: center; padding: 120px 2rem 3rem;">
-    <h2 style="font-size: 4.5rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: -2px; animation: fadeInUp 0.8s ease-out;">
+    <h2 class="hero-title" style="font-size: 4.5rem; font-weight: 700; background: linear-gradient(135deg, #a855f7, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1.5rem; line-height: 1.1; letter-spacing: -2px;">
       The Future of<br/>Transportation
     </h2>
     
-    <p style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8; animation: fadeInUp 0.8s ease-out 0.2s both;">
+    <p class="hero-subtitle" style="font-size: 1.3rem; color: #94a3b8; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.8;">
       Experience next-generation mobility. From hyperloop trains to quantum teleportation — powered by advanced nuclear fusion and solar technology.
     </p>
 
     <!-- Vehicle Carousel Showcase -->
-    <div style="margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; animation: fadeInUp 0.8s ease-out 0.3s both;">
-      <p style="color: #cbd5e1; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 2rem; font-weight: 600;">Our Fleet Technologies</p>
+    <div class="carousel-container" style="margin-bottom: 4rem; max-width: 1200px; margin-left: auto; margin-right: auto; animation: fadeInUp 0.8s ease-out 0.3s both;">
+      <p class="carousel-label" style="color: #cbd5e1; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 2rem; font-weight: 600;">Our Fleet Technologies</p>
       <div class="vehicle-carousel" style="perspective: 1000px;">
-        <div class="carousel-item" style="background: rgba(168, 85, 247, 0.2); border: 1.5px solid rgba(168, 85, 247, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
+        <div class="carousel-item carousel-item-1" style="background: rgba(168, 85, 247, 0.2); border: 1.5px solid rgba(168, 85, 247, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
           <div style="font-size: 3rem; margin-bottom: 1rem;">🚌</div>
           <h3 style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Nexus Express</h3>
           <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.75rem;">Mass Transit</p>
           <p style="color: #a855f7; font-weight: 700;">💡 Nuclear Fusion</p>
         </div>
-        <div class="carousel-item" style="background: rgba(236, 72, 153, 0.2); border: 1.5px solid rgba(236, 72, 153, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
+        <div class="carousel-item carousel-item-2" style="background: rgba(236, 72, 153, 0.2); border: 1.5px solid rgba(236, 72, 153, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
           <div style="font-size: 3rem; margin-bottom: 1rem;">🚕</div>
           <h3 style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Velocity Prime</h3>
           <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.75rem;">Premium Taxi</p>
           <p style="color: #ec4899; font-weight: 700;">🤖 AI-Optimized</p>
         </div>
-        <div class="carousel-item" style="background: rgba(34, 211, 238, 0.2); border: 1.5px solid rgba(34, 211, 238, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
+        <div class="carousel-item carousel-item-3" style="background: rgba(34, 211, 238, 0.2); border: 1.5px solid rgba(34, 211, 238, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
           <div style="font-size: 3rem; margin-bottom: 1rem;">🚄</div>
           <h3 style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Hyperion Rail</h3>
           <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.75rem;">Express Train</p>
           <p style="color: #22d3ee; font-weight: 700;">⚡ 500+ MPH</p>
         </div>
-        <div class="carousel-item" style="background: rgba(251, 146, 60, 0.2); border: 1.5px solid rgba(251, 146, 60, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
+        <div class="carousel-item carousel-item-4" style="background: rgba(251, 146, 60, 0.2); border: 1.5px solid rgba(251, 146, 60, 0.4); border-radius: 1rem; padding: 2rem; backdrop-filter: blur(10px);">
           <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
           <h3 style="color: #fff; font-weight: 700; margin-bottom: 0.5rem;">Quantum Portal</h3>
           <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.75rem;">Teleportation</p>
@@ -59,24 +65,24 @@
       </div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 6rem; flex-wrap: wrap;">
+    <div class="buttons-container" style="display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 6rem; flex-wrap: wrap;">
       <% if current_user %>
-        <%= link_to "🚀 BOOK YOUR JOURNEY", new_booking_path, style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+        <%= link_to "🚀 BOOK YOUR JOURNEY", new_booking_path, class: "button-primary", style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem; animation: buttonGlow 3s ease-in-out infinite;" %>
       <% else %>
-        <%= link_to "🚀 BOOK YOUR JOURNEY", new_user_session_path, style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+        <%= link_to "🚀 BOOK YOUR JOURNEY", new_user_session_path, class: "button-primary", style: "text-decoration: none; padding: 1rem 2.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem; animation: buttonGlow 3s ease-in-out infinite;" %>
       <% end %>
-      <%= link_to "EXPLORE VEHICLES", vehicles_path, style: "text-decoration: none; padding: 1rem 2.5rem; border: 2px solid #a855f7; color: #a855f7; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
+      <%= link_to "EXPLORE VEHICLES", vehicles_path, class: "button-secondary", style: "text-decoration: none; padding: 1rem 2.5rem; border: 2px solid #a855f7; color: #a855f7; border-radius: 0.75rem; font-weight: 700; transition: all 0.4s; text-transform: uppercase; letter-spacing: 1px; font-size: 0.95rem;" %>
     </div>
   </div>
 </div>
 
 <!-- Services Section -->
 <section style="padding: 8rem 2rem; background: linear-gradient(180deg, #0a0f1e 0%, #000 100%);">
-  <h2 style="text-align: center; font-size: 3rem; margin-bottom: 5rem; color: #fff; font-weight: 700; letter-spacing: -1px;">WHY CHOOSE IENG?</h2>
+  <h2 class="services-title" style="text-align: center; font-size: 3rem; margin-bottom: 5rem; color: #fff; font-weight: 700; letter-spacing: -1px;">WHY CHOOSE IENG?</h2>
   
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; max-width: 1400px; margin: 0 auto;">
     <!-- Nexus Express -->
-    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden; hover:transform: translateY(-8px);">
+    <div class="service-card service-card-1" style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 1.2rem; padding: 2.5rem; position: relative; overflow: hidden;">
       <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚌</div>
       <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Nexus Express</h3>
       <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Autonomous hover-bus network. Zero-emission, sustainable mass transit for 50 passengers.</p>
@@ -84,7 +90,7 @@
     </div>
 
     <!-- Velocity Prime -->
-    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+    <div class="service-card service-card-2" style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(236, 72, 153, 0.2); border-radius: 1.2rem; padding: 2.5rem; position: relative; overflow: hidden;">
       <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚕</div>
       <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Velocity Prime</h3>
       <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Premium hover-taxi service. AI-optimized routes, luxury cabin, 4 passengers max.</p>
@@ -92,7 +98,7 @@
     </div>
 
     <!-- Hyperion Rail -->
-    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+    <div class="service-card service-card-3" style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 1.2rem; padding: 2.5rem; position: relative; overflow: hidden;">
       <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">🚄</div>
       <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Hyperion Rail</h3>
       <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Magnetic levitation express. 500+ mph intercity transport for 200 passengers.</p>
@@ -100,30 +106,30 @@
     </div>
 
     <!-- Quantum Portal -->
-    <div style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(251, 146, 60, 0.2); border-radius: 1.2rem; padding: 2.5rem; transition: all 0.5s; cursor: pointer; position: relative; overflow: hidden;">
+    <div class="service-card service-card-4" style="background: rgba(20, 25, 50, 0.7); border: 1px solid rgba(251, 146, 60, 0.2); border-radius: 1.2rem; padding: 2.5rem; position: relative; overflow: hidden;">
       <div style="font-size: 3.5rem; margin-bottom: 1.5rem; display: inline-block;">✨</div>
       <h3 style="font-size: 1.5rem; margin: 1rem 0 0.75rem; color: #fff; font-weight: 700;">Quantum Portal</h3>
       <p style="color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem;">Experimental quantum teleportation. Instantaneous travel (beta testing, single passenger).</p>
       <p style="color: #fb923c; font-weight: 700; font-size: 1.3rem;">$99.99/trip</p>
-      </div>
     </div>
 
     <!-- Features Section -->
-    <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-      <div>
+    <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; grid-column: 1 / -1;">
+      <div class="feature-item feature-item-1">
         <h3 style="color: #fff; font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem;">🔐 Bank-Grade Security</h3>
         <p style="color: #94a3b8;">End-to-end encryption on all transactions. Your data is protected by quantum encryption.</p>
       </div>
-      <div>
+      <div class="feature-item feature-item-2">
         <h3 style="color: #fff; font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem;">🌍 100% Sustainable</h3>
         <p style="color: #94a3b8;">Nuclear fusion and solar power. Zero carbon emissions. Carbon-negative since 2025.</p>
       </div>
-      <div>
+      <div class="feature-item feature-item-3">
         <h3 style="color: #fff; font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem;">🤖 AI-Assisted Safety</h3>
         <p style="color: #94a3b8;">AI pilots with human oversight. 99.99% safety record. Real humans always in control.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer style="border-top: 1px solid rgba(51, 65, 85, 0.5); background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(10px); margin-top: 4rem;">
@@ -168,3 +174,166 @@
     </div>
   </footer>
 </div>
+
+<!-- GSAP Animations Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Logo glow pulse effect
+    gsap.to('.logo-glow', {
+      opacity: 0.8,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    // Hero title staggered letter animation
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+      const words = heroTitle.querySelectorAll('br');
+      gsap.from('.hero-title', {
+        opacity: 0,
+        y: -30,
+        duration: 0.8,
+        delay: 0.1,
+        ease: 'back.out'
+      });
+    }
+
+    // Carousel items entrance with stagger
+    gsap.from('.carousel-item', {
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      stagger: 0.12,
+      delay: 0.5,
+      ease: 'back.out'
+    });
+
+    // Service cards entrance with stagger and bounce
+    gsap.from('.service-card', {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.15,
+      delay: 0.3,
+      ease: 'back.out'
+    });
+
+    // Feature items fade in
+    gsap.from('.feature-item', {
+      opacity: 0,
+      x: -20,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.6,
+      ease: 'power2.out'
+    });
+
+    // Button hover animations
+    document.querySelectorAll('.button-primary').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        gsap.to(this, {
+          duration: 0.3,
+          scale: 1.05,
+          ease: 'power2.out'
+        });
+      });
+      btn.addEventListener('mouseleave', function() {
+        gsap.to(this, {
+          duration: 0.3,
+          scale: 1,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    document.querySelectorAll('.button-secondary').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        gsap.to(this, {
+          duration: 0.3,
+          scale: 1.05,
+          backgroundColor: 'rgba(168, 85, 247, 0.1)',
+          ease: 'power2.out'
+        });
+      });
+      btn.addEventListener('mouseleave', function() {
+        gsap.to(this, {
+          duration: 0.3,
+          scale: 1,
+          backgroundColor: 'transparent',
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Service card hover animations
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        gsap.to(this, {
+          duration: 0.4,
+          y: -10,
+          boxShadow: '0 20px 50px rgba(168, 85, 247, 0.3)',
+          ease: 'power2.out'
+        });
+      });
+      card.addEventListener('mouseleave', function() {
+        gsap.to(this, {
+          duration: 0.4,
+          y: 0,
+          boxShadow: 'none',
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Carousel items hover flip effect
+    document.querySelectorAll('.carousel-item').forEach((item, index) => {
+      item.addEventListener('mouseenter', function() {
+        gsap.to(this, {
+          duration: 0.5,
+          rotationY: 10,
+          rotationX: -5,
+          transformPerspective: 1000,
+          boxShadow: '0 15px 40px rgba(168, 85, 247, 0.5)',
+          ease: 'power2.out'
+        });
+      });
+      item.addEventListener('mouseleave', function() {
+        gsap.to(this, {
+          duration: 0.5,
+          rotationY: 0,
+          rotationX: 0,
+          boxShadow: 'none',
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // ScrollTrigger animations for services section if available
+    if (window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      
+      gsap.to('.services-title', {
+        scrollTrigger: {
+          trigger: '.services-title',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        duration: 0.8,
+        y: 0,
+        ease: 'power2.out'
+      });
+    }
+
+    // Smooth page transitions with fade
+    window.addEventListener('beforeunload', function() {
+      gsap.to('body', {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.in'
+      });
+    });
+  });
+</script>
