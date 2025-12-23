@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 15, 30, 0.98); backdrop-filter: blur(20px); padding: 1.2rem 2.5rem; z-index: 50; border-bottom: 1px solid rgba(168, 85, 247, 0.15); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); animation: fadeInDown 0.6s ease-out;">
   <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto;">
-    <!-- Logo and Brand Container -->
+    <!-- Logo and Brand Container - LEFT SIDE -->
     <div style="display: flex; align-items: center; gap: 1rem;">
       <!-- Animated Logo -->
       <%= link_to root_path, style: "text-decoration: none; display: flex; align-items: center;" do %>
@@ -35,19 +35,24 @@
           IENG
         </h1>
       <% end %>
-    <div style="display: flex; gap: 2rem; align-items: center;">
+    </div>
+
+    <!-- Navigation Links - RIGHT SIDE -->
+    <div style="display: flex; gap: 2.5rem; align-items: center; margin-left: auto;">
       <%= link_to "Vehicles", vehicles_path, style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
       <%= link_to "Services", root_path(anchor: "services"), style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
       <% if current_user %>
         <%= link_to "Bookings", bookings_path, style: "text-decoration: none; color: #cbd5e1; transition: all 0.4s; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;" %>
-        <div style="display: flex; align-items: center; gap: 1.5rem;">
-          <span style="color: #cbd5e1; font-size: 0.9rem; font-weight: 500;"><%= current_user.email %></span>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s;" %>
+        <div style="display: flex; align-items: center; gap: 1.5rem; padding-left: 1.5rem; border-left: 1px solid rgba(168, 85, 247, 0.2);">
+          <span style="color: #cbd5e1; font-size: 0.9rem; font-weight: 500; white-space: nowrap;"><%= current_user.email %></span>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s; white-space: nowrap;" %>
         </div>
       <% else %>
-        <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s;" %>
+        <%= link_to "Sign In", new_user_session_path, style: "text-decoration: none; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #a855f7, #ec4899); color: white; border-radius: 0.75rem; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s; white-space: nowrap;" %>
       <% end %>
     </div>
+  </div>
+</nav>
   </div>
 </nav>
 
