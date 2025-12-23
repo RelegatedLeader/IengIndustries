@@ -2,6 +2,8 @@
   <style>
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     .auth-card { animation: fadeInUp 0.7s ease-out; }
+    .auth-input { width: 100%; padding: 1rem; background: rgba(30, 41, 59, 0.6); border: 1.5px solid rgba(168, 85, 247, 0.2); color: #fff; border-radius: 0.75rem; font-size: 1rem; box-sizing: border-box; transition: all 0.3s; outline: none; }
+    .auth-input:focus { border-color: #a855f7; background: rgba(30, 41, 59, 0.9); }
   </style>
   <div style="width: 100%; max-width: 480px;">
     <div class="auth-card" style="background: rgba(20, 25, 50, 0.8); border: 1.5px solid rgba(168, 85, 247, 0.2); border-radius: 1.2rem; padding: 3rem; backdrop-filter: blur(20px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);">
@@ -17,13 +19,13 @@
         <!-- Email Field -->
         <div style="margin-bottom: 2rem;">
           <%= f.label :email, "Email Address", style: "display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width: 100%; padding: 1rem; background: rgba(30, 41, 59, 0.6); border: 1.5px solid rgba(168, 85, 247, 0.2); color: #fff; border-radius: 0.75rem; font-size: 1rem; box-sizing: border-box; transition: all 0.3s; outline: none;" onfocus="this.style.borderColor='#a855f7'; this.style.background='rgba(30, 41, 59, 0.9)'" onblur="this.style.borderColor='rgba(168, 85, 247, 0.2)'; this.style.background='rgba(30, 41, 59, 0.6)'" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "auth-input" %>
         </div>
 
         <!-- Password Field -->
         <div style="margin-bottom: 2rem;">
           <%= f.label :password, style: "display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem;" %>
-          <%= f.password_field :password, autocomplete: "current-password", style: "width: 100%; padding: 1rem; background: rgba(30, 41, 59, 0.6); border: 1.5px solid rgba(168, 85, 247, 0.2); color: #fff; border-radius: 0.75rem; font-size: 1rem; box-sizing: border-box; transition: all 0.3s; outline: none;" onfocus="this.style.borderColor='#a855f7'; this.style.background='rgba(30, 41, 59, 0.9)'" onblur="this.style.borderColor='rgba(168, 85, 247, 0.2)'; this.style.background='rgba(30, 41, 59, 0.6)'" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "auth-input" %>
         </div>
 
         <!-- Remember Me -->
