@@ -34,18 +34,161 @@
     .hero-title { }
     .hero-subtitle { animation: fadeInUp 0.8s ease-out 0.2s both; }
     .button-primary { animation: buttonGlow 3s ease-in-out infinite; }
+    
+    /* Desktop Styles (Keep as is) */
+    @media (min-width: 1025px) {
+      .hero-content { padding: 120px 2rem 3rem !important; }
+      .hero-title { font-size: 5rem !important; }
+      .hero-subtitle { font-size: 1.3rem !important; }
+      .carousel-label { font-size: 0.85rem !important; }
+      .vehicle-carousel { gap: 2rem !important; }
+      .carousel-item { flex: 0 0 calc(25% - 1.5rem) !important; padding: 2rem !important; }
+      .services-title { font-size: 3rem !important; }
+      .service-card { padding: 2.5rem !important; }
+    }
+    
+    /* Tablet Styles (1024px down to 769px) */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .hero-content { padding: 80px 2rem 2rem !important; }
+      .hero-title { font-size: 3.5rem !important; }
+      .hero-subtitle { font-size: 1.1rem !important; }
+      .carousel-label { font-size: 0.8rem !important; }
+      .vehicle-carousel { gap: 1.5rem !important; }
+      .carousel-item { flex: 0 0 calc(33.333% - 1rem) !important; padding: 1.5rem !important; }
+      .services-title { font-size: 2.5rem !important; }
+      .service-card { padding: 2rem !important; }
+      .buttons-container { gap: 1rem !important; }
+      .button-primary, .button-secondary { padding: 0.85rem 2rem !important; font-size: 0.85rem !important; }
+    }
+    
+    /* Mobile Styles (768px and below) */
+    @media (max-width: 768px) {
+      .hero-content { padding: 60px 1.5rem 2rem !important; }
+      .hero-title { 
+        font-size: 2rem !important; 
+        margin-bottom: 1rem !important; 
+        line-height: 1.2 !important; 
+        letter-spacing: 0px !important;
+      }
+      .hero-subtitle { 
+        font-size: 0.95rem !important; 
+        margin-bottom: 2rem !important; 
+        max-width: 100% !important; 
+        line-height: 1.6 !important;
+      }
+      .carousel-container { margin-bottom: 2rem !important; }
+      .carousel-label { font-size: 0.75rem !important; margin-bottom: 1.5rem !important; }
+      .vehicle-carousel { 
+        gap: 1rem !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important;
+      }
+      .carousel-item { 
+        flex: 0 0 calc(50% - 0.5rem) !important; 
+        padding: 1.25rem !important; 
+        margin-bottom: 1rem !important;
+      }
+      .buttons-container { 
+        flex-direction: column !important; 
+        gap: 1rem !important; 
+        margin-bottom: 3rem !important;
+      }
+      .button-primary, .button-secondary { 
+        padding: 0.75rem 1.5rem !important; 
+        font-size: 0.85rem !important; 
+        width: 100% !important;
+      }
+      .services-title { font-size: 1.75rem !important; margin-bottom: 3rem !important; }
+      .service-card { 
+        padding: 1.5rem !important; 
+        border-radius: 0.8rem !important;
+      }
+      .service-card h3 { font-size: 1.2rem !important; }
+      .service-card p { font-size: 0.85rem !important; }
+    }
+    
+    /* Small Mobile Styles (600px and below) */
+    @media (max-width: 600px) {
+      .hero { min-height: 80vh !important; }
+      .hero-content { padding: 50px 1rem 1.5rem !important; }
+      .hero-title { 
+        font-size: 1.75rem !important; 
+        margin-bottom: 0.75rem !important;
+      }
+      .hero-subtitle { 
+        font-size: 0.85rem !important; 
+        margin-bottom: 1.5rem !important;
+      }
+      .carousel-container { margin-bottom: 1.5rem !important; }
+      .carousel-label { font-size: 0.7rem !important; margin-bottom: 1rem !important; }
+      .carousel-item { 
+        flex: 0 0 100% !important; 
+        padding: 1rem !important;
+      }
+      .buttons-container { margin-bottom: 2rem !important; }
+      .button-primary, .button-secondary { 
+        padding: 0.65rem 1.25rem !important; 
+        font-size: 0.75rem !important;
+      }
+      .services-title { font-size: 1.5rem !important; margin-bottom: 2rem !important; }
+      .service-card { 
+        padding: 1.25rem !important;
+      }
+      .service-card h3 { font-size: 1rem !important; margin-bottom: 0.5rem !important; }
+      .service-card p { font-size: 0.8rem !important; }
+      .service-icon { font-size: 2.5rem !important; }
+      
+      /* Hide animated orbs on mobile - they're too large */
+      .orb-1, .orb-2 { display: none !important; }
+    }
+    
+    /* Video responsive styles */
+    .video-bg { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+    
+    @media (max-width: 768px) {
+      .video-bg { 
+        opacity: 0.6 !important;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .video-bg { 
+        opacity: 0.5 !important;
+      }
+    }
   </style>
+
+  <script>
+    // Ensure video plays on all devices
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.querySelector('.video-bg');
+      if (video) {
+        // Try to play immediately
+        video.play().catch(function(err) {
+          // If autoplay fails (common on iOS), user interaction is required
+          console.log('Autoplay prevented, video will play on user interaction');
+        });
+        
+        // For better mobile support, trigger play on any interaction
+        document.addEventListener('click', function() {
+          if (video.paused) {
+            video.play().catch(() => {});
+          }
+        }, { once: true });
+      }
+    });
+  </script>
 
   <!-- Video Background - Hover Bus -->
   <div style="position: absolute; top: 0; left: 0; right: 0; height: 60%; z-index: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-    <video autoplay muted loop style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+    <video playsinline class="video-bg" muted loop style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" onloadstart="this.play();" ontimeupdate="">
       <source src="/hoverBus_3.mp4" type="video/mp4">
     </video>
   </div>
 
   <!-- Animated Orbs Background -->
-  <div style="position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%); animation: orb1 8s ease-in-out infinite;"></div>
-  <div style="position: absolute; bottom: -30%; left: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%); animation: orb2 10s ease-in-out infinite;"></div>
+  <div class="orb-1" style="position: absolute; top: -50%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%); animation: orb1 8s ease-in-out infinite;"></div>
+  <div class="orb-2" style="position: absolute; bottom: -30%; left: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%); animation: orb2 10s ease-in-out infinite;"></div>
 
   <!-- Dark Overlay for Text Readability -->
   <div style="position: absolute; top: 0; left: 0; right: 0; height: 60%; background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%); z-index: 0.5; pointer-events: none;"></div>
