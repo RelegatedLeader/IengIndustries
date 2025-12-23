@@ -1,10 +1,71 @@
 /*
+ * Tailwind CSS
  * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
  */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Dark theme base */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #000;
+  color: #fff;
+}
+
+/* Custom dark theme */
+body {
+  @apply bg-black text-white;
+}
+
+/* Navigation */
+nav {
+  @apply bg-slate-900/95 backdrop-blur sticky top-0 z-50;
+}
+
+/* Hero Section */
+.hero {
+  @apply min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-slate-900 to-slate-800;
+}
+
+.hero-title {
+  @apply text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent;
+}
+
+/* Service Cards */
+.service-card {
+  @apply bg-slate-800/50 border border-slate-700 rounded-lg p-6 hover:border-purple-500 transition-all;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all;
+}
+
+.btn-secondary {
+  @apply border border-slate-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all;
+}
+
+/* Vehicle Cards */
+.vehicle-card {
+  @apply bg-slate-800 rounded-lg p-4 hover:shadow-lg transition-all border border-slate-700;
+}
+
+/* Booking Form */
+.form-group {
+  @apply mb-4;
+}
+
+.form-input {
+  @apply w-full bg-slate-800 border border-slate-700 rounded px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500;
+}
+
+/* Footer */
+footer {
+  @apply bg-slate-900 border-t border-slate-800;
+}
